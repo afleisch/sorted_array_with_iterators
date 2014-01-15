@@ -81,7 +81,7 @@ describe SortedArray do
     #   end.to yield_successive_args([0,2], [2,3], [5,4], [9,7] [16,9]) 
     # end
 
-    it "does not currently have any examples for it" do
+    it "should return value of accumulator" do
       expect { sorted_array.inject { |sum, n| sum + n } } == 25
       # pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-inject"
     end
