@@ -1,7 +1,7 @@
 class SortedArray
   attr_reader :internal_arr
 
-  def initialize arr=[]
+  def initialize (arr=[])
     @internal_arr = []
     arr.each { |el| add el }
   end
@@ -38,19 +38,52 @@ class SortedArray
   end
 
   def each &block
-    raise NotImplementedError.new("You need to implement the each method!")
+    #loop over all elements in @internal_arr 
+    #and yield to each element
+
+    #keep track of index
+    i= 0
+    while i < @internal_arr.size
+      yield @internal_arr[i]
+      i += 1
+    end
+        @internal_arr
+
+  
+    #raise NotImplementedError.new("You need to implement the each method!")
   end
 
   def map &block
-    raise NotImplementedError.new("You need to implement the map method!")
+    # x = 0 
+    # arr = []
+    # until @internal_arr[x] == nil do #
+    #   arr[x] = yield @internal_arr[x]
+    #   x += 1
+    # end
+    # return arr
+    #new_array = []
+    arr = []
+    each {|elem| arr << yield(elem)}
+    return arr
+    
+    #raise NotImplementedError.new("You need to implement the map method!")
   end
 
   def map! &block
-    raise NotImplementedError.new("You need to implement the map! method!")
+    # @internal_arr = self.map
+
+    # return @internal_arr
+    # new array = []
+    # self.each {|elem| yield self << elem}
+
+    # @internal_arr = new_array.map
+    # raise NotImplementedError.new("You need to implement the map! method!")
   end
 
-  def find value
-    raise NotImplementedError.new("You need to implement the find method!")
+  def find &block
+    # raise NotImplementedError.new("You need to implement the find method!")
+    #find should take a block and compare successive elements in an array to the argument 
+    #passed in i.e. target, and stops after the first element that matches is found, i.e. returns true
   end
 
   def inject acc=nil, &block
