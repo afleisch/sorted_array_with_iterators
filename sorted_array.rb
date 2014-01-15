@@ -70,23 +70,25 @@ class SortedArray
   end
 
   def map! &block
-    # @internal_arr = self.map
+  
+    new_arr = []
+    self.each{|ele| new_arr << (yield ele) }
+    @internal_arr = new_arr
 
-    # return @internal_arr
-    # new array = []
-    # self.each {|elem| yield self << elem}
-
-    # @internal_arr = new_array.map
     # raise NotImplementedError.new("You need to implement the map! method!")
   end
 
   def find &block
+   @internal_arr.each { |x| return if yield(x)}
+
     # raise NotImplementedError.new("You need to implement the find method!")
-    #find should take a block and compare successive elements in an array to the argument 
-    #passed in i.e. target, and stops after the first element that matches is found, i.e. returns true
+    
   end
 
   def inject acc=nil, &block
-    raise NotImplementedError.new("You need to implement the inject method!")
+    each { |x| acc += yield(x) }
+      return acc
+
+    # raise NotImplementedError.new("You need to implement the inject method!")
   end
 end
